@@ -48,6 +48,12 @@ userSchema.pre('save', async function (next) {
   this.password = await bcrpt.hash(this.password, 10);
 });
 
+// compare user password
+userSchema.methods.comparePasswor = async function (
+  enteredPassword
+) {
+  return await bcrpt.compare(enteredPassword, this.password)
+}
 userSchema.methods.JsonWebToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRE_TIME,
