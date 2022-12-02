@@ -2,7 +2,10 @@ const Product = require('../models/product');
 const ErrorHandler = require('../utils/errorHandler');
 const CatchAsyncError = require('../middlewares/catchAsyncError');
 const ApiFeature = require('../utils/apiFeature');
+
 exports.newProduct = CatchAsyncError(async (req, res, next) => {
+  
+  req.body.user = req.user.id // add user to request body
   const product = await Product.create(req.body);
   res.status(200).json({
     status: true,
