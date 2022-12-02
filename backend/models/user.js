@@ -49,7 +49,7 @@ userSchema.pre('save', async function (next) {
 });
 
 // compare user password
-userSchema.methods.comparePasswor = async function (
+userSchema.methods.comparePassword = async function (
   enteredPassword
 ) {
   return await bcrpt.compare(enteredPassword, this.password)

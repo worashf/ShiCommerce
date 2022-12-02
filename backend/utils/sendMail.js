@@ -5,7 +5,7 @@ const sendEmail = async options => {
         host: process.env.SMTP_HOST,
         port: process.env.SMTP_PORT,
         auth: {
-          user: this.process.env.SMTP_EMAIL,
+          user: process.env.SMTP_EMAIL,
           pass: process.env.SMTP_PASSWORD
         }
     });
