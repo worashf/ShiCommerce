@@ -192,3 +192,16 @@ exports.adminUpdateUser = catchAsyncError(async (req, res, next) => {
     user
   })
 })
+
+// Admin delete  User  => /api/v1/admin/user/:id
+exports.adminDeleteUser = catchAsyncError(async (req, res, next) => {
+  const user = await User.findById(req.params.id)
+  if (!user) {
+    return  next( new ErrorHandler(`User does not found with id: ${req.params.id}`))
+  }
+  //remove avatar fron Cloudnidary-- Todo
+  await user.remove()
+  res.status(200).json({
+    success: true,
+  })
+})
