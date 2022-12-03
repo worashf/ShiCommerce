@@ -3,7 +3,7 @@ const router = expess.Router();
 
 const { registerUser, loginUser, logout, forgotPassword,
     resetPassword, getUserProfile, updatePassword,
-    updateUserProfile, getAllUsers } = require('../controllers/authController');
+    updateUserProfile, getAllUsers,getUserDetails } = require('../controllers/authController');
 const {isAuthenticatedUser, authorizeRoles} = require("../middlewares/auth")
 router.route('/signup').post(registerUser);
 router.route("/login").post(loginUser);
@@ -14,5 +14,7 @@ router.route("/me").get(isAuthenticatedUser, getUserProfile)
 router.route("/password/update").put(isAuthenticatedUser, updatePassword)
 router.route("me/update").put(isAuthenticatedUser, updateUserProfile)
 //Admin routes
-router.route("/admin/users").get(isAuthenticatedUser, authorizeRoles("admin"),getAllUsers)
+
+router.route("/admin/users").get(isAuthenticatedUser, authorizeRoles("admin"), getAllUsers)
+router.route("/admin/user/:id").get(isAuthenticatedUser,authorizeRoles("admin"), getUserDetails)
 module.exports = router;
