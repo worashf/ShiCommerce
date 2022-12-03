@@ -30,7 +30,7 @@ const orderShcema = modgoose.Schema({
         ref:"User",
         required:true
     },
-    orderItem: [
+    orderItems: [
         {
             name: {
                 type: String,
