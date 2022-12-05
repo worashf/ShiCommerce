@@ -1,8 +1,10 @@
 import React from 'react'
+import MetaData from './layout/MetaData'
 
 const  Home = () =>{
   return (
-<>
+      <>
+          <MetaData title="Buy best products from  ShiShop online"/>
           <h1 id="products_heading">Latest Products</h1>
 
          
