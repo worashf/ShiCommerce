@@ -2,7 +2,7 @@ import React from 'react'
 
 const  Home = () =>{
   return (
-<div className='container-fluid'>
+<>
           <h1 id="products_heading">Latest Products</h1>
 
          
@@ -36,7 +36,7 @@ const  Home = () =>{
      
       </div>
     </section> 
-</div>
+    </>
   )
 }
 
