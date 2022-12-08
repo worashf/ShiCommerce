@@ -22,9 +22,10 @@ exports.getProducts = CatchAsyncError(async (req, res, next) => {
     .pagination(resPerPage);
 
   const products = await apiFeatures.query;
+  const productsCount = products.length;
   res.status(200).json({
     status: true,
-    count: products.length,
+    productsCount,
     products,
   });
 });
