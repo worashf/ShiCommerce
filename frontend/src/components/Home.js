@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import {  toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux'
 import MetaData from './layout/MetaData'
 import { getAllProducts } from '../redux/actions/productAction'
@@ -8,9 +9,14 @@ const Home = () => {
   
 
   const dispatch = useDispatch()
-  const {error, productsCount, loading,products} = useSelector(state => state.products)
+  const { error, productsCount, loading, products } = useSelector(state => state.products)
+  console.log(error)
   useEffect(() => {
     dispatch(getAllProducts())
+
+    if (error) {
+   return toast.error(error);
+    }
   },[dispatch])
   return ( 
     <>
