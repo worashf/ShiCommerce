@@ -7,17 +7,17 @@ export const getAllProducts = () => async(dispatch) => {
 
         })
         const res = await axios.get("/api/v1/products")
-        console.log(res)
+
         dispatch({
             type: ALL_PRODUCTS_SUCCESS,
             payload: res.data
         })
 
     }
-    catch (err) {
+    catch (error) {
         dispatch({
             type: ALL_PRODUCTS_FAIL,
-            payload: err.response.data.message
+            payload:error.response.data.errorMessage
         })
  }
 }
