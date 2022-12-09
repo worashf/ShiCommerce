@@ -1,12 +1,15 @@
 
-import {BrowserRouter as Router, Routes, Route}  from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './components/Home';
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
+    <>
     <Router>
 
 
@@ -21,6 +24,18 @@ function App() {
       <Footer/>
       </div>
       </Router>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      </>
   );
 }
 
