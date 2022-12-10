@@ -1,5 +1,8 @@
 
-import { ALL_PRODUCTS_REQUEST,ALL_PRODUCTS_FAIL,ALL_PRODUCTS_SUCCESS, CLEAR_ERRORS } from "../constants/productConstants"
+import {
+    ALL_PRODUCTS_REQUEST, ALL_PRODUCTS_FAIL, ALL_PRODUCTS_SUCCESS, CLEAR_ERRORS
+    , GET_PRODUCT_DETAILS_REQUEST, GET_PRODUCT_DETAILS_SUCCESS, GET_PRODUCT_DETAILS_FAIL
+} from "../constants/productConstants"
 
 
 export const productReducer = (state = { products: [] }, action) => {
@@ -31,3 +34,39 @@ export const productReducer = (state = { products: [] }, action) => {
             return state
     }
 }
+
+ const intialState = {
+    
+     loading: false,
+     error: null
+ }
+export const productDetailReducer = (state = { productDetail: {} }, { type, payload }) => {
+     switch (type) {
+         case GET_PRODUCT_DETAILS_REQUEST:
+             return {
+                 ...state,
+                 loading: true
+             }
+         case GET_PRODUCT_DETAILS_SUCCESS:
+             return {
+                 loading: false,
+              productDetail: payload
+ 
+             }
+         case GET_PRODUCT_DETAILS_FAIL:
+             return {
+       
+                 loading: false,
+                 error: payload
+             }
+         case CLEAR_ERRORS:
+             return {
+                 ...state,
+                 loading: false,
+                 error:null
+             }
+         default: 
+             return  state
+      }
+ 
+ }
