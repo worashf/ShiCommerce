@@ -1,23 +1,30 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {  toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux'
+import Pagination  from "react-js-pagination"
 import MetaData from './layout/MetaData'
 import { getAllProducts } from '../redux/actions/productAction'
 import Product from './product/Product'
 import Loader from './layout/Loader'
 const Home = () => {
   
-
+  const [currentPage, setCurrentPage] = useState(1)
+  
   const dispatch = useDispatch()
-  const { error, productsCount, loading, products } = useSelector(state => state.products)
+  const { error, productsCount, loading, products ,resPerPage} = useSelector(state => state.products)
   console.log(error)
   useEffect(() => {
-    dispatch(getAllProducts())
+    dispatch(getAllProducts(currentPage))
 
     if (error) {
    return toast.error(error);
     }
-  },[dispatch])
+  }, [dispatch,error, currentPage])
+  
+
+  const setCurrentPageNum = (pageNum) => {
+    setCurrentPage(pageNum)
+  }
   return ( 
     <>
       {loading ? <Loader/>: (
@@ -39,7 +46,25 @@ const Home = () => {
     
      
       </div>
-    </section> 
+          </section> 
+          {
+            resPerPage <= productsCount && (
+              <div className='d-flex justify-content-center mt-5'>
+              <Pagination
+                  activePage={currentPage}
+                  itemsCountPerPage={resPerPage}
+                  totalItemsCount={productsCount}
+                  onChange={setCurrentPageNum}
+                  nextPageText={'Next'}
+                  prevPageText={'Prev'}
+                  firstPageText={'First'}
+                  lastPageText={'Last'}
+                  itemClass="page-item"
+                  linkClass="page-link"/>
+            </div>
+            )
+           }
+        
     </>
       )}
     </>
