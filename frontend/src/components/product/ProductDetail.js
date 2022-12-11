@@ -8,6 +8,7 @@ import {
   getProductdetails,
 } from "../../redux/actions/productAction";
 import Loader from "../layout/Loader";
+import MetaData from "../layout/MetaData"
 import { toast } from "react-toastify";
 
 const ProductDetail = () => {
@@ -33,9 +34,12 @@ const ProductDetail = () => {
   }, []);
   return (
     <>
+
       {loading ? (
         <Loader />
       ) : (
+          <>
+                  <MetaData  title ={productDetail.name}/>
         <div className="row f-flex justify-content-around">
           <div className="col-12 col-lg-5 img-fluid" id="product_image">
             <Carousel pause="hover">
@@ -171,7 +175,8 @@ const ProductDetail = () => {
               </div>
             </div>
           </div>
-        </div>
+            </div>
+            </>
       )}
     </>
   );
