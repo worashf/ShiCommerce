@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {  toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux'
-import Pagination  from "react-js-pagination"
+import Pagination from "react-js-pagination"
+import { useParams } from 'react-router-dom';
 import MetaData from './layout/MetaData'
 import { getAllProducts } from '../redux/actions/productAction'
 import Product from './product/Product'
@@ -9,17 +10,17 @@ import Loader from './layout/Loader'
 const Home = () => {
   
   const [currentPage, setCurrentPage] = useState(1)
-  
+  const {keyword} = useParams()
   const dispatch = useDispatch()
   const { error, productsCount, loading, products ,resPerPage} = useSelector(state => state.products)
   console.log(error)
   useEffect(() => {
-    dispatch(getAllProducts(currentPage))
+    dispatch(getAllProducts(keyword,currentPage))
 
     if (error) {
    return toast.error(error);
     }
-  }, [dispatch,error, currentPage])
+  }, [dispatch,error,keyword, currentPage])
   
 
   const setCurrentPageNum = (pageNum) => {
