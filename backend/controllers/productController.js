@@ -117,3 +117,13 @@ product.reviews.forEach(review => {
     success: true
 })
 })
+// Get Product Reviews   =>   /api/v1/reviews
+exports.getProductReviews = catchAsyncError(async (req, res, next) => {
+  const product = await Product.findById(req.query.id)
+
+  res(200).json({
+    success: true, 
+    reviews:product.reviews
+  })
+})
+
