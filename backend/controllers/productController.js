@@ -111,7 +111,7 @@ product.reviews.forEach(review => {
     product.  numOfReviews = product.reviews.length
   }
   //Update total rating for product
-  product.rating = product.reviews.reduce((acc, item) => item.rating + acc, 0) / product.reviews.length
+  product.ratings = product.reviews.reduce((acc, item) => item.rating + acc, 0) / product.reviews.length
   await product.save({ validateBeforeSave: false });
   res.status(200).json({
     success: true
@@ -134,11 +134,11 @@ exports.deleteProductReview = catchAsyncError(async (req, res, next) => {
   const reviews = product.reviews.filter(review => review._id.toString() !== req.query.id.toString())
   const numOfReviews = reviews.length
   //  calculate product  total rating
-  const rating = reviews.reduce((acc, item) => item.rating + acc, 0) / reviews.length
+  const ratings = reviews.reduce((acc, item) => item.rating + acc, 0) / reviews.length
   // find product and update its reviews
   await Product.findOneAndUpdate(req.query.productId, {
     reviews,
-    rating,
+    ratings,
     numOfReviews
   }, {
     new: true,
