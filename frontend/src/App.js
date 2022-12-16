@@ -4,9 +4,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './components/Home';
+import Login from "./components/user/Login";
+import Register from "./components/user/Register";
 import ProductDetail from "./components/product/ProductDetail";
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   return (
@@ -23,6 +26,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/search/:keyword" element={<Home/>}/>
             <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register/>}/>
           </Routes>
       <Footer/>
       </div>
