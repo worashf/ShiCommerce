@@ -23,9 +23,9 @@ const Header = () => {
       </div>
 
       <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
-        <button className="btn" id="login_btn">Login</button>
+        <Link to ="/login" className="btn mx-2" id="login_btn">Login</Link>
 
-        <span id="cart" className="ml-4">Cart</span>
+        <span id="cart" className="mx-2">Cart</span>
         <span className="ml-3" id="cart_count">2</span>
       </div>
     </nav>
