@@ -1,5 +1,5 @@
  const crypto = require("crypto")
-
+ const cloudinary  = require("cloudinary")
 const User = require('../models/user');
 const ErrorHandler = require('../utils/errorHandler');
 const catchAsyncError = require('../middlewares/catchAsyncError');
@@ -8,14 +8,18 @@ const sendEmail = require('../utils/sendMail');
 const user = require("../models/user");
 //Signup new user  /api/v1/register
 exports.registerUser = catchAsyncError(async (req, res, next) => {
+
+  const result = await cloudinary.v2.uploader.upload(req.body.avatar)
   const { name, email, password } = req.body;
+
+
   const user = await User.create({
     name,
     email,
     password,
     avatar: {
-      public_id: 'sample_id',
-      url: 'sample_url',
+      public_id: result.public_id,
+      url: result.url
     }, 
   });
 sendtoken(user, 200,res)
@@ -25,6 +29,7 @@ sendtoken(user, 200,res)
 exports.loginUser = 
 catchAsyncError(async (req, res, next) => {
   const { email, password } = req.body
+  console.log(email, password)
   // check if email and password entered by user
   if (!email || !password) {
     return next(new ErrorHandler("Please enter email & password",400))
