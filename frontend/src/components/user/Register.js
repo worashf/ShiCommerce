@@ -35,35 +35,37 @@ const Register = () => {
   }, [dispatch, isAuthenticated, error]);
 
     
-  const submitHandler = (e) => {
+  const submitHandler = e => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('password', password);
-    formData.append('avatar', avatar);
+        const formData = new FormData();
+        formData.set('name', name);
+        formData.set('email', email);
+        formData.set('password', password);
+        formData.set('avatar', avatar);
+
 
     dispatch(registerUser(formData))
 }
 
 const onChange = e => {
-    if (e.target.name === 'avatar') {
+  if (e.target.name === 'avatar') {
 
-        const reader = new FileReader();
+    const reader = new FileReader();
 
-        reader.onload = () => {
-            if (reader.readyState === 2) {
-                setAvatarPreview(reader.result)
-                setAvatar(reader.result)
-            }
+    reader.onload = () => {
+        if (reader.readyState === 2) {
+            setAvatarPreview(reader.result)
+            setAvatar(reader.result)
         }
-
-        reader.readAsDataURL(e.target.files[0])
-
-    } else {
-        setUser({ ...user, [e.target.name]: e.target.value })
     }
+
+    reader.readAsDataURL(e.target.files[0])
+
+} else {
+    setUser({ ...user, [e.target.name]: e.target.value })
+}
+    
 }
   return (
     <>
@@ -74,7 +76,7 @@ const onChange = e => {
           <MetaData title={"Register User"} />
           <div className="row wrapper">
             <div className="col-10 col-lg-5">
-            <form className="shadow-lg" onSubmit={submitHandler} enctype="application/x-www-form-urlencoded">
+            <form className="shadow-lg" onSubmit={submitHandler}>
                         <h1 className="mb-3">Register</h1>
 
                         <div className="form-group">
