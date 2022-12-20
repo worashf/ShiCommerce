@@ -2,9 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Dropdown } from "react-bootstrap";
+import {toast} from "react-toastify"
 import Search from "./Search";
+import {logout} from "../../redux/actions/userAction"
 const Header = () => {
   const { loading, user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch()
+  const handleLogout = () => {
+    dispatch(logout())
+    toast.success("Logout Successfuly")
+  }
   return (
     <>
       <nav className="navbar row">
@@ -62,7 +69,7 @@ const Header = () => {
                   <Link to="/me" style={{ textDecoration: "none" }}>
                     <Dropdown.Item>Profile</Dropdown.Item>
                   </Link>
-                  <Link to="/" style={{ textDecoration: "none" }}>
+                  <Link to="/" style={{ textDecoration: "none" }} onClick={handleLogout}>
                     <Dropdown.Item>Logout</Dropdown.Item>
                   </Link>
                 </Dropdown.Menu>
