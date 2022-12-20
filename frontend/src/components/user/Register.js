@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import React, {  useState } from "react";
+
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import MetaData from "../layout/MetaData";
 import Loader from "../layout/Loader";
-import { clearErrors, registerUser } from "../../redux/actions/userAction";
+import {  registerUser } from "../../redux/actions/userAction";
 
 const Register = () => {
     const [user, setUser] = useState({
@@ -17,22 +17,14 @@ const Register = () => {
 
     const [avatar, setAvatar] = useState('')
     const [avatarPreview, setAvatarPreview]  = useState("/images/avatar.jpg");
-  const { isAuthenticated, loading, error } = useSelector(
+  const { loading } = useSelector(
     (state) => state.auth
   );
-  const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
  
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/");
-    }
-    if (error) {
-      toast.error(error);
-      dispatch(clearErrors());
-    }
-  }, [dispatch, isAuthenticated, error]);
+
 
     
   const submitHandler = e => {

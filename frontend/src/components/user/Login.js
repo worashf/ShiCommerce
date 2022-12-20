@@ -22,7 +22,7 @@ const Login = () => {
             dispatch(clearErrors())
         }
 
-    }, [dispatch, error, isAuthenticated, toast])
+    }, [dispatch, error, isAuthenticated])
     
 
     const loginHandler = (e) => {

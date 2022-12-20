@@ -10,7 +10,7 @@ const Profile = () => {
       <>
           {loading ? <Loader /> : (
               <>
-                  <MetaData title={`${user.name} profile`}/>
+                  <MetaData title={`Your  profile`}/>
                   <h2 class="mt-5 ml-5">My Profile</h2>
         <div class="row justify-content-around mt-5 user-info">
             <div class="col-12 col-md-3">
