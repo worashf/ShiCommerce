@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Login from "./components/user/Login";
 import Register from "./components/user/Register";
 import ProductDetail from "./components/product/ProductDetail";
+import Profile from "./components/user/Profile";
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import store from "./redux/store";
@@ -34,7 +35,8 @@ function App() {
             <Route path="/search/:keyword" element={<Home/>}/>
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register/>}/>
+            <Route path="/register" element={<Register />} />
+            <Route path="/me" element={<Profile/>} exact/>
           </Routes>
       <Footer/>
       </div>
