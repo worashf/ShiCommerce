@@ -57,21 +57,26 @@ const Header = () => {
 
                 <Dropdown.Menu>
                   {user && user.role !== "admin" ? (
-                    <Link to="/orders/me" style={{ textDecoration: "none" }}>
-                      <Dropdown.Item>Orders</Dropdown.Item>
+                     <Dropdown.Item><Link to="/orders/me" style={{ textDecoration: "none" }}>
+                     orders
                     </Link>
+                    </Dropdown.Item>
                   ) : (
-                    <Link to="/" style={{ textDecoration: "none" }}>
-                      <Dropdown.Item>Dashboard</Dropdown.Item>
-                    </Link>
+                    <Dropdown.Item> <Link to="/" style={{ textDecoration: "none" }}>
+                    Dashboard
+                      </Link>
+                      </Dropdown.Item>
                   )}
-
+                <Dropdown.Item>
                   <Link to="/me" style={{ textDecoration: "none" }}>
-                    <Dropdown.Item>Profile</Dropdown.Item>
-                  </Link>
+                   Profile
+                    </Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
                   <Link to="/" style={{ textDecoration: "none" }} onClick={handleLogout}>
-                    <Dropdown.Item>Logout</Dropdown.Item>
-                  </Link>
+                 Logout
+                    </Link>
+                    </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </div>
