@@ -4,7 +4,7 @@ import { toast } from "react-toastify"
 import { useNavigate } from 'react-router-dom'
 import MetaData from '../layout/MetaData'
 import { UPDATE_PASSWORD_RESET } from '../../redux/constants/userConstants'
-import { clearErrors,updatePassword ,loadUser} from '../../redux/actions/userAction'
+import { clearErrors,updatePassword } from '../../redux/actions/userAction'
 const UpdatePassword = () => {
 
     const [oldPassword, setOldPassword] = useState("")
