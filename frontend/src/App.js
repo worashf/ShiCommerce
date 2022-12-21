@@ -9,6 +9,9 @@ import Register from "./components/user/Register";
 import ProductDetail from "./components/product/ProductDetail";
 import Profile from "./components/user/Profile";
 import ProtectedRoute from "./components/route/ProtectedRoute";
+import UpdateProfile from "./components/user/UpdateProfile";
+import UpdatePassword from "./components/user/UpdatePassword";
+import ForgotPassword from "./components/user/ForgotPassword";
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import store from "./redux/store";
@@ -37,10 +40,12 @@ function App() {
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/password/forgot" element={<ForgotPassword/>}/>
             <Route element={<ProtectedRoute />}>
               
             <Route path="/me" element={<Profile/>} />
-
+              <Route path="/me/update" element={<UpdateProfile />} />
+              <Route path="/password/update" element={<UpdatePassword/>}/>
             </Route>
            
           </Routes>
