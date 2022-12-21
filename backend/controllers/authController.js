@@ -29,7 +29,7 @@ sendtoken(user, 200,res)
 exports.loginUser = 
 catchAsyncError(async (req, res, next) => {
   const { email, password } = req.body
-  console.log(email, password)
+
   // check if email and password entered by user
   if (!email || !password) {
     return next(new ErrorHandler("Please enter email & password",400))
@@ -50,6 +50,7 @@ catchAsyncError(async (req, res, next) => {
 //Forgot Password => /api/v1/password/forgot
 exports.forgotPassword = catchAsyncError(async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email })
+  console.log(req.body)
   if (!user) {
      return next(new ErrorHandler("User not found with this email",404))
   }
@@ -131,6 +132,22 @@ exports.updateUserProfile = catchAsyncError(async (req, res, next) => {
     name: req.body.name,
     email: req.body.email
   }
+
+  // update avatar 
+  if (req.body.avatar !== "") {
+    const user1 = await User.findById(req.user.id)
+    const image_id = user1.avatar.public_id
+    const res = await cloudinary.v2.uploader.destroy(image_id)
+    const result = await cloudinary.v2.uploader.upload(req.body.avatar)
+    newUserData.avatar = {
+      public_id: result.public_id,
+      url:result.secure_url
+      
+    }
+
+  }
+   
+
   const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,
     runValidators: true,
