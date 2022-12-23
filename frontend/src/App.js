@@ -12,6 +12,7 @@ import ProtectedRoute from "./components/route/ProtectedRoute";
 import UpdateProfile from "./components/user/UpdateProfile";
 import UpdatePassword from "./components/user/UpdatePassword";
 import ForgotPassword from "./components/user/ForgotPassword";
+import Cart from "./components/cart/Cart";
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import store from "./redux/store";
@@ -47,7 +48,7 @@ function App() {
               <Route path="/me/update" element={<UpdateProfile />} />
               <Route path="/password/update" element={<UpdatePassword/>}/>
             </Route>
-           
+            <Route path="/cart" element={<Cart />} />
           </Routes>
       <Footer/>
       </div>
