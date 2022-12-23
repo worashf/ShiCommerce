@@ -10,9 +10,11 @@ import {
 import Loader from "../layout/Loader";
 import MetaData from "../layout/MetaData"
 import { toast } from "react-toastify";
+import { addItemToCart } from "../../redux/actions/cartActions";
 
 const ProductDetail = () => {
   const [show, setShow] = useState(false);
+  const [quantity, setQuantity]= useState(1)
   const dispatch = useDispatch();
   const { loading, error, productDetail } = useSelector(
     (state) => state.product
@@ -32,6 +34,30 @@ const ProductDetail = () => {
       dispatch(clearErrors());
     }
   }, []);
+
+
+  const decreaseQty = () => {
+    const count = document.querySelector(".count")
+    if (count.valueAsNumber <= 1) return
+       let qty = count.valueAsNumber -1
+       setQuantity(qty)
+   
+ }
+
+  const increaseQty = () => {
+    const count = document.querySelector(".count")
+    if (count.valueAsNumber >= productDetail.stock) return
+       let qty = count.valueAsNumber +1
+       setQuantity(qty)
+  }
+   
+  const addToCart = () => {
+    console.log("method called")
+    dispatch(addItemToCart(id, quantity))
+    toast.success("Item Added successfuly")
+  }
+
+  
   return (
     <>
 
@@ -76,21 +102,23 @@ const ProductDetail = () => {
 
             <p id="product_price">{productDetail.price}</p>
             <div className="stockCounter d-inline">
-              <span className="btn btn-danger minus">-</span>
+              <span className="btn btn-danger minus" onClick={decreaseQty}>-</span>
 
               <input
                 type="number"
                 className="form-control count d-inline"
-                value="1"
+                value={quantity}
                 readOnly
               />
 
-              <span className="btn btn-primary plus">+</span>
+              <span className="btn btn-primary plus" onClick={increaseQty}>+</span>
             </div>
             <button
               type="button"
               id="cart_btn"
-              className="btn btn-primary d-inline ml-4"
+                  className="btn btn-primary d-inline mx-3"
+                  disabled={productDetail.stock === 0}
+                  onClick={addToCart}
             >
               Add to Cart
             </button>
