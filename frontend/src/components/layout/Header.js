@@ -7,6 +7,7 @@ import Search from "./Search";
 import {logout} from "../../redux/actions/userAction"
 const Header = () => {
   const { loading, user } = useSelector((state) => state.auth);
+  const{cartItems} = useSelector(state => state.cart)
   const dispatch = useDispatch()
   const handleLogout = () => {
     dispatch(logout())
@@ -34,7 +35,7 @@ const Header = () => {
                 Cart
               </span>
               <span className="ml-3" id="cart_count">
-                2
+                {cartItems.length}
               </span>
             </Link>
           </div>
