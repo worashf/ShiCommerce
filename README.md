@@ -33,9 +33,9 @@ To get the copy of this project in your computer,clone this repository or just d
 
 👤 **Worash**
 
-- GitHub: [@githubhandle](https://github.com/worashf)
-- Twitter: [@twitterhandle](https://twitter.com/WorashAboche)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/worash-abocherugn-a02219154/)
+- GitHub: [@Worashf](https://github.com/worashf)
+- Twitter: [@WorashAboche](https://twitter.com/WorashAboche)
+- LinkedIn: [Worash Abocherugn](https://www.linkedin.com/in/worash-abocherugn-a02219154/)
 
 ## 🤝 Contributing
 
