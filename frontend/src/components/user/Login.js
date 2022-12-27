@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import { toast } from "react-toastify"
-import  {Link,useNavigate} from "react-router-dom"
+import  {Link,useLocation,useNavigate} from "react-router-dom"
 import  {useDispatch, useSelector} from "react-redux"
 import MetaData from "../layout/MetaData"
 import Loader from "../layout/Loader"
@@ -12,17 +12,19 @@ const Login = () => {
     const [password, setPassword] = useState("")
     const { isAuthenticated, loading, error } = useSelector(state => state.auth)
     const navigate = useNavigate()
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
+  const location = useLocation()
+  const redirect = location.search ? location.search.split('=')[1] : '/'
     useEffect(() => {
         if (isAuthenticated) {
-            navigate("/")
+            navigate(redirect)
         }
         if (error) {
             toast.error(error)
             dispatch(clearErrors())
         }
 
-    }, [dispatch, error, isAuthenticated])
+    }, [dispatch, error, isAuthenticated,location,navigate])
     
 
     const loginHandler = (e) => {
