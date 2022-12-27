@@ -13,6 +13,7 @@ import UpdateProfile from "./components/user/UpdateProfile";
 import UpdatePassword from "./components/user/UpdatePassword";
 import ForgotPassword from "./components/user/ForgotPassword";
 import Cart from "./components/cart/Cart";
+import Shipping from "./components/cart/Shipping";
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import store from "./redux/store";
@@ -46,7 +47,8 @@ function App() {
               
             <Route path="/me" element={<Profile/>} />
               <Route path="/me/update" element={<UpdateProfile />} />
-              <Route path="/password/update" element={<UpdatePassword/>}/>
+              <Route path="/password/update" element={<UpdatePassword />} />
+              <Route path="/shipping" element={<Shipping/>}/>
             </Route>
             <Route path="/cart" element={<Cart />} />
           </Routes>
