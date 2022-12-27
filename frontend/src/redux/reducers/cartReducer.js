@@ -1,9 +1,10 @@
 
-import { ADD_TO_CART, REMOVE_CART_ITEM } from "../constants/cartConstants"
+import { ADD_TO_CART, REMOVE_CART_ITEM, SAVE_SHIPPING_INFO } from "../constants/cartConstants"
 
 
 const initialState = {
-    cartItems :[]
+    cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : [],
+    shippingInfo : localStorage.getItem("shippingInfo") ? JSON.parse(localStorage.getItem("shippingInfo")) : {}
 }
 export const cartReducer = (state = initialState, { type, payload })=>{
     
@@ -28,7 +29,12 @@ export const cartReducer = (state = initialState, { type, payload })=>{
                 ...state, 
                 cartItems: state.cartItems.filter(item=> item.productId !== payload)
             }
-         
+        case SAVE_SHIPPING_INFO:
+            return {
+                ...state,
+                shippingInfo : payload
+
+            }
         default: 
             return state
     }
