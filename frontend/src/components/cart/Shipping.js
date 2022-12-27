@@ -4,6 +4,7 @@ import {countries} from "countries-list"
 import MetaData from '../layout/MetaData'
 import { saveShippingInfo } from '../../redux/actions/cartActions'
 import { useNavigate } from 'react-router-dom'
+import CheckoutSteps from './CheckoutSteps'
 const Shipping = () => {
     const { shippingInfo } = useSelector(state => state.cart)
     
@@ -30,6 +31,7 @@ const Shipping = () => {
   return (
       <div className='container '>
           <MetaData title={"Shipping Info"} />
+          <CheckoutSteps shipping />
           <div className="col-10 col-lg-5 mx-auto my-5">
                     <form className="shadow-lg p-5" onSubmit={saveShippingInfoHandler}>
                         <h1 className="mb-4">Shipping Info</h1>
