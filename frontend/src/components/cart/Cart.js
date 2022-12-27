@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../layout/MetaData";
 import {
@@ -9,6 +9,7 @@ import {
 import { toast } from "react-toastify";
 const Cart = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const { cartItems } = useSelector((state) => state.cart);
 
   const decreaseQty = (id, quantity) => {
@@ -29,7 +30,9 @@ const Cart = () => {
     dispatch(removeItemToCart(id));
     // toast.success("Item removed successfuly")
   };
-
+  const checkoutHandler = () => {
+   navigate('/shipping')
+}
   return (
     <>
       {cartItems.length === 0 ? (
@@ -37,7 +40,8 @@ const Cart = () => {
           <h2 className="text-info"> Your cart is empty</h2>
         </div>
       ) : (
-        <>
+          <>
+            <MetaData title={"Shopping Cart"}/>
           <h2 className="mt-5">
             Your Cart: <b>{cartItems.length}</b>
           </h2>
@@ -142,7 +146,7 @@ const Cart = () => {
                 </p>
 
                 <hr />
-                <button id="checkout_btn" className="btn btn-primary btn-block">
+                <button id="checkout_btn" className="btn btn-primary btn-block" onClick={checkoutHandler}>
                   Check out
                 </button>
               </div>
