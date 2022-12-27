@@ -624,3 +624,13 @@ ul.CTAs a {
   font-size: 0.8rem;
   color: grey;
 }
+#shipping_btn {
+
+
+  background-color: #fa9c23;
+  border-color: #fa9c23;
+  margin-top: 2rem;
+  color: #fff;
+  border-radius: 3rem;
+
+}
