@@ -18,6 +18,7 @@ import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import store from "./redux/store";
 import { loadUser } from "./redux/actions/userAction";
+import ConfirmOrder from "./components/cart/ConfirmOrder";
 
 function App() {
 
@@ -48,7 +49,8 @@ function App() {
             <Route path="/me" element={<Profile/>} />
               <Route path="/me/update" element={<UpdateProfile />} />
               <Route path="/password/update" element={<UpdatePassword />} />
-              <Route path="/shipping" element={<Shipping/>}/>
+              <Route path="/shipping" element={<Shipping />} />
+              <Route path="/confirm" element={<ConfirmOrder/>}/>
             </Route>
             <Route path="/cart" element={<Cart />} />
           </Routes>
