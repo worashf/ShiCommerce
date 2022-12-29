@@ -9,12 +9,13 @@ const app = express();
 
 const products = require('./routes/product');
 const auth = require('./routes/auth');
-const order = require ("./routes/order")
+const order = require("./routes/order")
+const payment = require("./routes/payment")
 const errorMidleWare = require('./middlewares/error');
+const env = require("dotenv")
 
 
-
-
+env.config({ path: 'backend/config/config.env' })
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -28,6 +29,8 @@ app.use('/api/v1', products);
 app.use('/api/v1', auth);
 //order routes
 app.use("/api/v1", order)
+//payment routes
+app.use("/api/v1", payment)
 //error handeler middleware
 app.use(errorMidleWare);
 module.exports = app;
