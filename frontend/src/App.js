@@ -1,6 +1,12 @@
-import { useEffect } from "react";
+import { useEffect ,useState} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
+import axios from "axios";
+import { loadStripe } from "@stripe/stripe-js";
+import {
+
+  Elements,
+} from '@stripe/react-stripe-js';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './components/Home';
@@ -14,6 +20,7 @@ import UpdatePassword from "./components/user/UpdatePassword";
 import ForgotPassword from "./components/user/ForgotPassword";
 import Cart from "./components/cart/Cart";
 import Shipping from "./components/cart/Shipping";
+import Payment from "./components/cart/Payment";
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import store from "./redux/store";
@@ -22,11 +29,18 @@ import ConfirmOrder from "./components/cart/ConfirmOrder";
 
 function App() {
 
-
+  const [stripeApiKey,setStripeApiKey] = useState("")
 
   useEffect(() => {
     store.dispatch(loadUser())
-  },[])
+    async function getStripeApiKey() {
+      const { data } = await axios.get("/api/v1/stripe-api-key")
+      setStripeApiKey(data.stripeApiKey)
+    }
+    getStripeApiKey()
+
+  }, [])
+
   return (
     <>
     <Router>
@@ -50,8 +64,13 @@ function App() {
               <Route path="/me/update" element={<UpdateProfile />} />
               <Route path="/password/update" element={<UpdatePassword />} />
               <Route path="/shipping" element={<Shipping />} />
-              <Route path="/confirm" element={<ConfirmOrder/>}/>
+              <Route path="/confirm" element={<ConfirmOrder />} />
+              <Route path = "/payment" element={ stripeApiKey && 
+          <Elements stripe={loadStripe(stripeApiKey)}> <Payment/> </Elements>} />
             </Route>
+
+            <Route path = "/payment" element={ stripeApiKey && 
+          <Elements stripe={loadStripe(stripeApiKey)}> <Payment/> </Elements>} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
       <Footer/>
