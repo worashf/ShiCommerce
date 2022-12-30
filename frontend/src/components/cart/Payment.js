@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 import {
 
@@ -13,7 +14,7 @@ import {
 } from "@stripe/react-stripe-js";
 import MetaData from "../layout/MetaData";
 import CheckoutSteps from "./CheckoutSteps";
-import axios from "axios";
+import { createOrder, clearErrors } from "../../redux/actions/orderActions";
 
 const options = {
     style: {
@@ -34,15 +35,31 @@ const Payment = () => {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-  const { cartItems, shippingInfo } = useSelector((state) => state.cart);
+    const { cartItems, shippingInfo } = useSelector((state) => state.cart);
+    const{error} = useSelector(state=> state.order)
 
-
+ console.log(error,"Error")
  const navigate = useNavigate()
-  useEffect(() => {}, []);
+    useEffect(() => {
+        if (error) {
+            toast.error(error)
+            dispatch(clearErrors())
+      }
+  }, [dispatch,error, toast]);
 
     
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"))
+  const order = {
+    orderItems: cartItems,
+    shippingInfo
+}
 
+if (orderInfo) {
+    order.itemsPrice = orderInfo.itemsPrice
+    order.shippingPrice = orderInfo.shippingPrice
+    order.taxPrice = orderInfo.taxPrice
+    order.totalPrice = orderInfo.totalPrice
+}
   const paymentData = {
       amount : orderInfo.totalPrice 
     }
@@ -56,7 +73,12 @@ const Payment = () => {
             
             res = await axios.post("/api/v1/process/payment", paymentData, { headers: { "Content-Type": "application/json" } })
             const clientSecret = res.data.client_secret;
-            if (!stripe || elements) return
+
+            console.log(clientSecret);
+
+            if (!stripe || !elements) {
+                return;
+            }
             
             const result = await stripe.confirmCardPayment(clientSecret, {
                 payment_method: {
@@ -66,7 +88,7 @@ const Payment = () => {
                         email: user.email
                     }
                 }
-            })
+            });
 
             if (result.error) {
                 toast.error(result.error.errorMessage);
@@ -76,12 +98,12 @@ const Payment = () => {
                 // The payment is processed or not
                 if (result.paymentIntent.status === 'succeeded') {
 
-                    // order.paymentInfo = {
-                    //     id: result.paymentIntent.id,
-                    //     status: result.paymentIntent.status
-                    // }
+                    order.paymentInfo = {
+                        id: result.paymentIntent.id,
+                        status: result.paymentIntent.status
+                    }
 
-                    // dispatch(createOrder(order))
+                    dispatch(createOrder(order))
 
                     navigate('/success')
                 } else {
