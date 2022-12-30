@@ -3,6 +3,7 @@ import { configureStore} from "@reduxjs/toolkit"
 import { productReducer, productDetailReducer } from "./reducers/productReducer"
 import { authReducer, userReducer, forgotPassword } from "./reducers/userReducer"
 import { cartReducer } from "./reducers/cartReducer"
+import { orderReducer } from "./reducers/orderReducer"
 
 const preLoadedCartState = {
   cart: {
@@ -16,7 +17,8 @@ const rootReducer = {
   auth: authReducer,
   user: userReducer,
   forgotPassword: forgotPassword,
-  cart:cartReducer
+  cart: cartReducer,
+  order:orderReducer
 }
 const store = configureStore({
   reducer: rootReducer,
