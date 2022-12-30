@@ -26,6 +26,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import store from "./redux/store";
 import { loadUser } from "./redux/actions/userAction";
 import ConfirmOrder from "./components/cart/ConfirmOrder";
+import OrderSuccess from "./components/cart/OrderSuccess";
 
 function App() {
 
@@ -65,6 +66,7 @@ function App() {
               <Route path="/password/update" element={<UpdatePassword />} />
               <Route path="/shipping" element={<Shipping />} />
               <Route path="/confirm" element={<ConfirmOrder />} />
+              <Route path="/success" element={<OrderSuccess />} />
               <Route path = "/payment" element={ stripeApiKey && 
           <Elements stripe={loadStripe(stripeApiKey)}> <Payment/> </Elements>} />
             </Route>
