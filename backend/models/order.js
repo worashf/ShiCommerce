@@ -1,6 +1,6 @@
-const modgoose = require("mongoose")
+const mongoose = require("mongoose")
  
-const orderShcema = modgoose.Schema({
+const orderShcema = mongoose.Schema({
     shippingInfo: {
         address: {
             type: String,
@@ -25,19 +25,19 @@ const orderShcema = modgoose.Schema({
         },
        
     },
-    user:{
-        type: modgoose.Schema.ObjectId,
-        ref:"User",
-        required:true
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
     },
     orderItems: [
         {
             name: {
-                type: String,
+            type: String,
             required:true 
             },
             quantity: {
-                 type: Number,
+            type: Number,
             required:true
             },
             image: {
@@ -49,9 +49,9 @@ const orderShcema = modgoose.Schema({
                 required:true
             },
             product: {
-                type: modgoose.Schema.ObjectId,
-                ref: "Product",
-                required:true
+                type: mongoose.Schema.Types.ObjectId,
+        
+                ref: 'Product'
             }
         }
     ],
@@ -105,4 +105,4 @@ const orderShcema = modgoose.Schema({
 
 })
 
-module.exports = modgoose.model("Order",orderShcema)
+module.exports = mongoose.model("Order",orderShcema)
