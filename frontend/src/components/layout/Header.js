@@ -29,6 +29,7 @@ const Header = () => {
         </div>
 
         <div className="col-12 col-md-3 mt-4 mt-md-0 text-center row">
+        {user ? (   <>
           <div className="col-4  mt-2">
             <Link to="/cart" style={{ textDecoration: "none" }}>
               <span id="cart" className="mx-2">
@@ -40,7 +41,7 @@ const Header = () => {
             </Link>
           </div>
 
-          {user ? (
+        
             <div className="col-6 d-flex  ">
               <div className="ml-4">
                 <figure className="avatar nav-avatar">
@@ -57,17 +58,17 @@ const Header = () => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  {user && user.role !== "admin" ? (
-                     <Dropdown.Item><Link to="/orders/me" style={{ textDecoration: "none" }}>
+                  {user && user.role === "admin" && (
+                      <Dropdown.Item> <Link to="/" style={{ textDecoration: "none" }}>
+                      Dashboard
+                        </Link>
+                        </Dropdown.Item>
+                  )}
+                  <Dropdown.Item>
+                    <Link to="/orders/me" style={{ textDecoration: "none" }}>
                      orders
                     </Link>
-                    </Dropdown.Item>
-                  ) : (
-                    <Dropdown.Item> <Link to="/" style={{ textDecoration: "none" }}>
-                    Dashboard
-                      </Link>
-                      </Dropdown.Item>
-                  )}
+                </Dropdown.Item>
                 <Dropdown.Item>
                   <Link to="/me" style={{ textDecoration: "none" }}>
                    Profile
@@ -81,6 +82,7 @@ const Header = () => {
                 </Dropdown.Menu>
               </Dropdown>
             </div>
+            </>
           ) : (
               !loading && (
                 
