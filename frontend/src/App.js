@@ -27,6 +27,7 @@ import store from "./redux/store";
 import { loadUser } from "./redux/actions/userAction";
 import ConfirmOrder from "./components/cart/ConfirmOrder";
 import OrderSuccess from "./components/cart/OrderSuccess";
+import ListOrder from "./components/order/ListOrder";
 
 function App() {
 
@@ -68,7 +69,9 @@ function App() {
               <Route path="/confirm" element={<ConfirmOrder />} />
               <Route path="/success" element={<OrderSuccess />} />
               <Route path = "/payment" element={ stripeApiKey && 
-          <Elements stripe={loadStripe(stripeApiKey)}> <Payment/> </Elements>} />
+                <Elements stripe={loadStripe(stripeApiKey)}> <Payment /> </Elements>} />
+              
+              <Route path="/orders/me" element={<ListOrder/>}/>
             </Route>
 
             <Route path = "/payment" element={ stripeApiKey && 
