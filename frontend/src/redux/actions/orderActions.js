@@ -64,13 +64,13 @@ export const orderDetails = (id) => async (dispatch) => {
         const { data } = await axios.get(`/api/v1/order/${id}`)
   
         dispatch({
-            type: ORDER_DETAILS_SUCCESS,
+            type: ORDER_DTAILS_SUCCESS,
             payload: data.order
         })
     }
     catch (error) {
         dispatch({
-            type: ORDER_DETAILS_FAIL,
+            type: ORDER_DTAILS_FAIL,
             payload: error.response.data.errorMessage
         })
     }
