@@ -7,11 +7,14 @@ import 'font-awesome/css/font-awesome.min.css';
 import store from './redux/store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={store}>
+
   <React.StrictMode>
+    <Provider store={store}>
     <App />
+      </Provider>
+ 
     </React.StrictMode>
-    </Provider>
+
 );
 
 
