@@ -10,6 +10,7 @@ import {
 } from "../../redux/actions/productAction";
 import Loader from "../layout/Loader";
 import MetaData from "../layout/MetaData";
+import ListReview from "../review/ListReview";
 import { toast } from "react-toastify";
 import { addItemToCart } from "../../redux/actions/cartActions";
 
@@ -19,9 +20,8 @@ const ProductDetail = () => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const dispatch = useDispatch();
-  const { loading, error, productDetail } = useSelector(
-    (state) => state.product
-  );
+  const { loading, error, productDetail } = useSelector( (state) => state.product);
+  const { error: reviewError, success } = useSelector((state) => state.review);
   const { user } = useSelector((state) => state.auth);
   const { id } = useParams();
 
@@ -37,7 +37,11 @@ const ProductDetail = () => {
       toast.error(error);
       dispatch(clearErrors());
     }
-  }, []);
+    if (reviewError) {
+      toast.error(reviewError)
+      dispatch(clearErrors());
+    }
+  }, [error, reviewError, dispatch, toast,id]);
 
   const decreaseQty = () => {
     const count = document.querySelector(".count");
@@ -270,7 +274,10 @@ const ProductDetail = () => {
                 </div>
               </div>
             </div>
-          </div>
+            </div>
+            {productDetail.reviews && productDetail.reviews.length > 0 && (
+                        <ListReview reviews={productDetail.reviews} />
+                    )}
         </>
       )}
     </>
