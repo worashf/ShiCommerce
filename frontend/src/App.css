@@ -494,21 +494,26 @@ footer {
 
 .sidebar-wrapper {
   display: flex;
-  width: 100%;
+  width: 100%; 
   align-items: stretch;
   min-height: 100vh;
   font-weight: normal;
-
+  margin-bottom: 0;
   margin-top: 0;
   height: 100%;
   left: 0;
   top: 0;
   z-index: 10;
+
+}
+.main{
+  overflow-y: scroll;
 }
 #sidebar {
   min-width: 100%;
   max-width: 100%;
   background: #232f3e;
+  min-height: 100vh;
   color: #fff;
   transition: all 0.3s;
 }
