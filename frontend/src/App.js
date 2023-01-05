@@ -29,6 +29,7 @@ import ConfirmOrder from "./components/cart/ConfirmOrder";
 import OrderSuccess from "./components/cart/OrderSuccess";
 import ListOrder from "./components/order/ListOrder";
 import OrderDetails from "./components/order/OrderDetails";
+import Dashboard from "./components/admin/Dashboard";
 
 
 function App() {
@@ -74,12 +75,16 @@ function App() {
                 <Elements stripe={loadStripe(stripeApiKey)}> <Payment /> </Elements>} />
               
               <Route path="/orders/me" element={<ListOrder />} />
-              <Route path="/order/:id" element={<OrderDetails/>}/>
-            </Route>
+              <Route path="/order/:id" element={<OrderDetails />} />
+              
 
+              
             <Route path = "/payment" element={ stripeApiKey && 
           <Elements stripe={loadStripe(stripeApiKey)}> <Payment/> </Elements>} />
-            <Route path="/cart" element={<Cart />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/dashboard" isAdmin={true} element={<Dashboard/>}/>
+            </Route>
+
             
           </Routes>
       <Footer/>

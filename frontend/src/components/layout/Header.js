@@ -59,7 +59,7 @@ const Header = () => {
 
                 <Dropdown.Menu>
                   {user && user.role === "admin" && (
-                      <Dropdown.Item> <Link to="/" style={{ textDecoration: "none" }}>
+                      <Dropdown.Item> <Link to="/dashboard" style={{ textDecoration: "none" }}>
                       Dashboard
                         </Link>
                         </Dropdown.Item>
