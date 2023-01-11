@@ -30,6 +30,8 @@ import OrderSuccess from "./components/cart/OrderSuccess";
 import ListOrder from "./components/order/ListOrder";
 import OrderDetails from "./components/order/OrderDetails";
 import Dashboard from "./components/admin/Dashboard";
+import ProductList from "./components/admin/ProductList";
+import NewProduct from "./components/admin/NewProduct";
 
 
 function App() {
@@ -82,7 +84,9 @@ function App() {
             <Route path = "/payment" element={ stripeApiKey && 
           <Elements stripe={loadStripe(stripeApiKey)}> <Payment/> </Elements>} />
               <Route path="/cart" element={<Cart />} />
-              <Route path="/dashboard" isAdmin={true} element={<Dashboard/>}/>
+              <Route path="/dashboard" isAdmin={true} element={<Dashboard />} />
+              <Route path="/admin/products" element={<ProductList />} />
+              <Route path="/admin/product" element={<NewProduct/>}/>
             </Route>
 
             
