@@ -4,15 +4,39 @@ const CatchAsyncError = require('../middlewares/catchAsyncError');
 const APIFeatures = require('../utils/apiFeature');
 const catchAsyncError = require('../middlewares/catchAsyncError');
 const { query } = require('express');
+const cloudinary = require('cloudinary')
 
 exports.newProduct = CatchAsyncError(async (req, res, next) => {
-  
+  console.log(req.body,"first")
+  let images = []
+    if (typeof req.body.images === 'string') {
+      images.push(req.body.images)
+      console.log("true")
+    } else {
+      images = req.body.images
+      console.log("true  second")
+    }
+
+    let imagesLinks = [];
+   console.log(images.length, "len")
+  for (let i = 0; i < images.length; i++) {
+      console.log(i, "integer")
+        let result = await cloudinary.v2.uploader.upload(images[i]);
+           console.log(result, "result")
+        imagesLinks.push({
+            public_id: result.public_id,
+            url: result.secure_url
+        })
+    }
+
+  req.body.images = imagesLinks
   req.body.user = req.user.id // add user to request body
+  console.log(req.body)
   const product = await Product.create(req.body);
-  res.status(200).json({
-    status: true,
-    product,
-  });
+  res.status(201).json({
+    success: true,
+    product
+})
 });
 //  get all products => /api/v1/products
 exports.getProducts = CatchAsyncError(async (req, res, next) => {
