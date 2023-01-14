@@ -152,7 +152,7 @@ const ProductDetail = () => {
 
               <hr />
 
-              <p id="product_price">{productDetail.price}</p>
+              <p id="product_price">${productDetail.price}</p>
               <div className="stockCounter d-inline">
                 <span className="btn btn-danger minus" onClick={decreaseQty}>
                   -
