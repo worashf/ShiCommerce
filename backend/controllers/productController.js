@@ -7,7 +7,7 @@ const { query } = require('express');
 const cloudinary = require('cloudinary')
 
 exports.newProduct = CatchAsyncError(async (req, res, next) => {
-  console.log(req.body,"first")
+
   let images = []
     if (typeof req.body.images === 'string') {
       images.push(req.body.images)
@@ -18,11 +18,11 @@ exports.newProduct = CatchAsyncError(async (req, res, next) => {
     }
 
     let imagesLinks = [];
-   console.log(images.length, "len")
+
   for (let i = 0; i < images.length; i++) {
       console.log(i, "integer")
         let result = await cloudinary.v2.uploader.upload(images[i]);
-           console.log(result, "result")
+       
         imagesLinks.push({
             public_id: result.public_id,
             url: result.secure_url
@@ -31,7 +31,7 @@ exports.newProduct = CatchAsyncError(async (req, res, next) => {
 
   req.body.images = imagesLinks
   req.body.user = req.user.id // add user to request body
-  console.log(req.body)
+
   const product = await Product.create(req.body);
   res.status(201).json({
     success: true,
@@ -41,7 +41,7 @@ exports.newProduct = CatchAsyncError(async (req, res, next) => {
 //  get all products => /api/v1/products
 exports.getProducts = CatchAsyncError(async (req, res, next) => {
   const resPerPage = 4;
-
+   console.log(req)
   const apiFeatures = new APIFeatures(Product.find(), req.query)
     .search()
     .filter()
@@ -75,7 +75,7 @@ exports.productDetails = CatchAsyncError(async (req, res, next) => {
 });
 
 exports.updateProduct = CatchAsyncError(async (req, res, next) => {
-  const product = await Product.findById(req.params.id);
+  let product = await Product.findById(req.params.id);
   if (!product) {
     return res.status(404).json({
       success: false,
@@ -180,9 +180,9 @@ exports.deleteProductReview = catchAsyncError(async (req, res, next) => {
 exports.getAdminProducts = CatchAsyncError(async (req, res, next) => {
 
 
-  
+   console.log(req, "best")
   const products= await Product.find()
-
+console.log(products, "pro")
     res.status(200).json({ 
       status: true,
       products,
