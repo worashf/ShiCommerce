@@ -15,7 +15,7 @@ const ProductList = () => {
 
     const { loading, error, products } = useSelector(state => state.products);
     const { error: deleteError, isDeleted } = useSelector(state => state.productAction)
-    const  navigate  = useNavigate()
+    const navigate = useNavigate()
     useEffect(() => {
         dispatch(getAllAdminProducts());
 
