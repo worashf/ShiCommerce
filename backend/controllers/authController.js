@@ -29,7 +29,7 @@ sendtoken(user, 200,res)
 exports.loginUser = 
 catchAsyncError(async (req, res, next) => {
   const { email, password } = req.body
-
+   console.log(req.body)
   // check if email and password entered by user
   if (!email || !password) {
     return next(new ErrorHandler("Please enter email & password",400))
