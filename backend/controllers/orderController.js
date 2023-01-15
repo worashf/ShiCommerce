@@ -42,7 +42,9 @@ exports.newOrder = catchAsyncError(async (req, res, next) => {
 
 // Get single order = > /api/v1/order/:id
 exports.getSingleOrder = catchAsyncError(async (req, res, next) => {
-    const order = await Order.findById(req.params.id).populate("user",'name email')
+ 
+    const order = await Order.findById(req.params.id).populate("user", 'name email')
+
     if (!order) {
         return  next(new ErrorHandler(`No oder found with id: ${req.params.id}`))
     }
@@ -85,13 +87,16 @@ exports.getAllOrders = catchAsyncError(async (req, res, next) => {
 
 exports.updateProcessOrder = catchAsyncError(async (req, res, next) => {
     const order = await Order.findById(req.params.id)
+ 
     if (order.orderStatus === "Delivered") {
-        return next(new ErrorHandler("You have already delivered this order",400))
+        return next(new ErrorHandler("delivered",400))
     }
+    console.log( order.orderItems, "orderItems")
     order.orderItems.forEach(async orderItem => {
-        await updateStock(orderItem.product, orderItem.quantity)
+        await updateStock(orderItem.productId, orderItem.quantity)
     })
-    order.orderStatus = req.body.orderStatus
+   
+    order.orderStatus = req.body.status
     order.deliveredAt = Date.now()
     await order.save()
 
@@ -121,8 +126,9 @@ exports.deleteOrder = catchAsyncError(async (req, res, next) => {
 
 
 //helper funtion
-async function updateStock(id, quantity) {
-    const product = await Product.findById(id)
+async function updateStock(_id, quantity) {
+
+    const product = await Product.findById(_id)
     product.stock = product.stock - quantity
      await product.save({validateBeforeSave:false})
 }
