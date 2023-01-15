@@ -33,6 +33,7 @@ import Dashboard from "./components/admin/Dashboard";
 import ProductList from "./components/admin/ProductList";
 import NewProduct from "./components/admin/NewProduct";
 import UpdateProduct from "./components/admin/UpdateProduct";
+import OrdersList from "./components/admin/OrderList";
 
 
 function App() {
@@ -79,7 +80,7 @@ function App() {
               
               <Route path="/orders/me" element={<ListOrder />} />
               <Route path="/order/:id" element={<OrderDetails />} />
-              
+              <Route path="/admin/orders" element={<OrdersList/>}/>
 
               
             <Route path = "/payment" element={ stripeApiKey && 
