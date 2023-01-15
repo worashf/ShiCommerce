@@ -50,14 +50,14 @@ exports.getProducts = CatchAsyncError(async (req, res, next) => {
   const products = await apiFeatures.query;
   
   const productsCount = await Product.countDocuments()
-  setTimeout(() => {
+  
     res.status(200).json({ 
       status: true,
       productsCount,
       products,
       resPerPage
     });
-  },2000)
+
 
 });
 
