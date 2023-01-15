@@ -34,6 +34,7 @@ import ProductList from "./components/admin/ProductList";
 import NewProduct from "./components/admin/NewProduct";
 import UpdateProduct from "./components/admin/UpdateProduct";
 import OrdersList from "./components/admin/OrderList";
+import ProcessOrder from "./components/admin/ProcessOrder";
 
 
 function App() {
@@ -81,7 +82,7 @@ function App() {
               <Route path="/orders/me" element={<ListOrder />} />
               <Route path="/order/:id" element={<OrderDetails />} />
               <Route path="/admin/orders" element={<OrdersList/>}/>
-
+              <Route path="/admin/order/:orderId" element={<ProcessOrder/>}/>
               
             <Route path = "/payment" element={ stripeApiKey && 
           <Elements stripe={loadStripe(stripeApiKey)}> <Payment/> </Elements>} />

@@ -68,7 +68,8 @@ if (orderInfo) {
         e.preventDefault()
       
 
-        let res;
+      let res;
+      document.querySelector('#pay_btn').disabled = true;
         try {
             
             res = await axios.post("/api/v1/process/payment", paymentData, { headers: { "Content-Type": "application/json" } })
@@ -113,7 +114,7 @@ if (orderInfo) {
         }
         catch (error) {
             document.querySelector("#pay_btn").disabled = true
-            toast.error(error)
+            toast.error(error.response.data.errorMessage)
         }
     }
     
