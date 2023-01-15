@@ -3,7 +3,7 @@ import { configureStore} from "@reduxjs/toolkit"
 import { productReducer, productDetailReducer, newReviewReducer, productActionReducer,newProductReducer} from "./reducers/productReducer"
 import { authReducer, userReducer, forgotPassword, allUsersReducer } from "./reducers/userReducer"
 import { cartReducer } from "./reducers/cartReducer"
-import { orderReducer,myOrderReducer,orderDetailsReducer, allOrdersReducer } from "./reducers/orderReducer"
+import { orderReducer,myOrderReducer,orderDetailsReducer, allOrdersReducer, orderActionReducer } from "./reducers/orderReducer"
 
 const preLoadedCartState = {
   cart: {
@@ -25,6 +25,7 @@ const rootReducer = {
   myOrders: myOrderReducer,
   orderDetail: orderDetailsReducer,
   allOrders: allOrdersReducer,
+  orderAction: orderActionReducer,
   review: newReviewReducer
 }
 const store = configureStore({
