@@ -8,7 +8,7 @@ import MetaData from './layout/MetaData'
 import { getAllProducts } from '../redux/actions/productAction'
 import Product from './product/Product'
 import Loader from './layout/Loader'
-import { Discuss } from 'react-loader-spinner';
+
 
 
 const prices = [10, 50, 100, 500, 3000]
@@ -32,7 +32,7 @@ const Home = () => {
   
   const {keyword} = useParams()
   const dispatch = useDispatch()
-  const { error, productsCount, loading, products ,resPerPage,   filteredProductsCount} = useSelector(state => state.products)
+  const { error, productsCount, loading, products ,resPerPage} = useSelector(state => state.products)
 
   useEffect(() => {
     dispatch(getAllProducts(keyword,currentPage,price,category, rating))

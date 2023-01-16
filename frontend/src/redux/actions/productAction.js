@@ -26,7 +26,6 @@ import {
   GET_REVIEWS_FAIL,
   DELETE_REVIEW_REQUEST,
   DELETE_REVIEW_SUCCESS,
-  DELETE_REVIEW_RESET,
   DELETE_REVIEW_FAIL,
 } from "../constants/productConstants";
 import axios from "axios";

@@ -55,7 +55,7 @@ const NewProduct = () => {
             dispatch({ type: NEW_PRODUCT_RESET })
         }
 
-    }, [dispatch,toast, error, success, navigate])
+    }, [dispatch, error, success, navigate])
 
     const submitHandler = (e) => {
         e.preventDefault();

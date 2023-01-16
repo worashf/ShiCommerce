@@ -19,7 +19,7 @@ const ListOrder = () => {
             toast.error(error)(
             dispatch(clearErrors))
         }
-    }, [dispatch, error, toast])
+    }, [dispatch, error])
     
     const setOrders = () => {
         const data = {

@@ -29,7 +29,7 @@ const UpdatePassword = () => {
             navigate("/me")
             dispatch({type:UPDATE_PASSWORD_RESET })
         }
-    }, [dispatch,toast, isUpdated, error, user])
+    }, [dispatch, isUpdated, error, user])
 
 
 

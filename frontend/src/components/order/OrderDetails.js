@@ -21,10 +21,10 @@ const OrderDetails = () => {
         dispatch(orderDetails(id));
 
         if (error) {
-            alert.error(error);
+            toast.error(error);
             dispatch(clearErrors())
         }
-    }, [dispatch, alert, error, id])
+    }, [dispatch, error, id])
 
     const shippingDetails = shippingInfo && `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.postalCode}, ${shippingInfo.country}`
 

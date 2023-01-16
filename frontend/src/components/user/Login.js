@@ -24,7 +24,7 @@ const Login = () => {
             dispatch(clearErrors())
         }
 
-    }, [dispatch, error, isAuthenticated,location,navigate])
+    }, [dispatch, error, isAuthenticated,location,navigate,redirect])
     
 
     const loginHandler = (e) => {

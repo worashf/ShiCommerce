@@ -48,7 +48,7 @@ const UpdateUser = () => {
             })
         }
 
-    }, [dispatch,toast, error, navigate, isUpdated, userId, user])
+    }, [dispatch, error, navigate, isUpdated, userId, user])
 
     const submitHandler = (e) => {
         e.preventDefault();

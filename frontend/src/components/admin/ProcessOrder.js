@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link,  useParams } from 'react-router-dom'
 
 import MetaData from '../layout/MetaData'
 import Loader from '../layout/Loader'
@@ -17,7 +17,7 @@ const ProcessOrder = () => {
 
 
     const dispatch = useDispatch();
-    const navigate  = useNavigate()
+    
 
     const { loading, order = {} } = useSelector(state => state.orderDetail)
     const { shippingInfo, orderItems, paymentInfo, user, totalPrice, orderStatus } = order
@@ -40,7 +40,7 @@ const ProcessOrder = () => {
             dispatch({ type: UPDATE_ORDER_RESET })
         }
 
-    }, [dispatch, toast, error, isUpdated, orderId])
+    }, [dispatch,  error, isUpdated, orderId])
 
 
     const updateOrderHandler = (id) => {

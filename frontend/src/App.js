@@ -1,6 +1,6 @@
 import { useEffect ,useState} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 import axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
 import {

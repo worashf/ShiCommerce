@@ -35,7 +35,7 @@ const ProductList = () => {
             dispatch({ type: DELETE_PRODUCT_RESET })
         }
 
-    }, [dispatch, toast, error, deleteError, isDeleted, navigate])
+    }, [dispatch,  error, deleteError, isDeleted, navigate])
 
      const setProducts = () => {
         const data = {

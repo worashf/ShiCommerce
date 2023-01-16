@@ -45,7 +45,7 @@ const Payment = () => {
             toast.error(error)
             dispatch(clearErrors())
       }
-  }, [dispatch,error, toast]);
+  }, [dispatch,error]);
 
     
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"))

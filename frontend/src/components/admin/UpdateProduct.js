@@ -76,7 +76,7 @@ const UpdateProduct = () => {
             dispatch({ type: UPDATE_PRODUCT_RESET })
         }
 
-    }, [dispatch, toast, error, isUpdated, navigate, updateError, productDetail, productId])
+    }, [dispatch,  error, isUpdated, navigate, updateError, productDetail, productId])
 
 
     const submitHandler = (e) => {

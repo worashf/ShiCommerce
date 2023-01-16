@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../layout/MetaData";
@@ -6,7 +6,7 @@ import {
   addItemToCart,
   removeItemToCart,
 } from "../../redux/actions/cartActions";
-import { toast } from "react-toastify";
+
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
