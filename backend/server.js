@@ -2,7 +2,10 @@ const app = require('./app');
 const dotenv = require('dotenv');
 const cloudinary = require('cloudinary')
 const connectDatabase = require('./config/db');
-//set up enviroment file
+
+// Setting up config file
+// if (process.env.NODE_ENV !== 'PRODUCTION') dotenv.config({ path: 'backend/config/config.env' })
+
 dotenv.config({ path: 'backend/config/config.env' });
 
 // uncatght exception handler

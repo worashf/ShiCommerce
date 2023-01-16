@@ -14,7 +14,6 @@ const payment = require("./routes/payment")
 const errorMidleWare = require('./middlewares/error');
 const env = require("dotenv")
 
-
 env.config({ path: 'backend/config/config.env' })
 
 app.use(express.json());
@@ -32,5 +31,14 @@ app.use("/api/v1", order)
 //payment routes
 app.use("/api/v1", payment)
 //error handeler middleware
+
+
+if (process.env.NODE_ENV === 'PRODUCTION') {
+    app.use(express.static(path.join(__dirname, '../frontend/build')))
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
+    })
+}
 app.use(errorMidleWare);
 module.exports = app;
