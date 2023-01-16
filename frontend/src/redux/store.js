@@ -1,7 +1,7 @@
 
 import { configureStore} from "@reduxjs/toolkit"
-import { productReducer, productDetailReducer, newReviewReducer, productActionReducer,newProductReducer} from "./reducers/productReducer"
-import { authReducer, userReducer, forgotPassword, allUsersReducer } from "./reducers/userReducer"
+import { productReducer, productDetailReducer, newReviewReducer, productActionReducer,newProductReducer,productReviewsReducer,reviewReducer} from "./reducers/productReducer"
+import { authReducer, userReducer, forgotPassword, allUsersReducer,userDetailsReducer } from "./reducers/userReducer"
 import { cartReducer } from "./reducers/cartReducer"
 import { orderReducer,myOrderReducer,orderDetailsReducer, allOrdersReducer, orderActionReducer } from "./reducers/orderReducer"
 
@@ -18,6 +18,7 @@ const rootReducer = {
   productAction: productActionReducer,
   auth: authReducer,
   user: userReducer,
+  userDetails: userDetailsReducer,
   allUsers: allUsersReducer,
   forgotPassword: forgotPassword,
   cart: cartReducer,
@@ -26,7 +27,9 @@ const rootReducer = {
   orderDetail: orderDetailsReducer,
   allOrders: allOrdersReducer,
   orderAction: orderActionReducer,
-  review: newReviewReducer
+  review: newReviewReducer,
+  productReviews: productReviewsReducer,
+  reviewAction: reviewReducer,
 }
 const store = configureStore({
   reducer: rootReducer,
