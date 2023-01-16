@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const multer = require("multer");
 const upload = multer();
 const cors = require("cors")
-
+const path = require('path')
 const app = express();
 
 const products = require('./routes/product');
