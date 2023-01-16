@@ -35,6 +35,9 @@ import NewProduct from "./components/admin/NewProduct";
 import UpdateProduct from "./components/admin/UpdateProduct";
 import OrdersList from "./components/admin/OrderList";
 import ProcessOrder from "./components/admin/ProcessOrder";
+import UsersList from "./components/admin/UserList";
+import UpdateUser from "./components/admin/UpdateUser";
+import ReviewList from "./components/admin/ReviewList";
 
 
 function App() {
@@ -83,14 +86,17 @@ function App() {
               <Route path="/order/:id" element={<OrderDetails />} />
               <Route path="/admin/orders" element={<OrdersList/>}/>
               <Route path="/admin/order/:orderId" element={<ProcessOrder/>}/>
-              
+              <Route path="/admin/users" element={<UsersList />} />
+              <Route path="/admin/user/:userId" element={<UpdateUser/>}/>
+
             <Route path = "/payment" element={ stripeApiKey && 
           <Elements stripe={loadStripe(stripeApiKey)}> <Payment/> </Elements>} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/dashboard" isAdmin={true} element={<Dashboard />} />
               <Route path="/admin/products" element={<ProductList />} />
               <Route path="/admin/product" element={<NewProduct />} />
-              <Route path="admin/product/:productId"  element={<UpdateProduct/>}/>
+              <Route path="admin/product/:productId" element={<UpdateProduct />} />
+              <Route path="/admin/reviews" element={<ReviewList/>}/>
             </Route>
 
             
