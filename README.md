@@ -1,6 +1,7 @@
 # ShiShop
 
-> ShiShop is an e-comerce website built with NodeJS, ExpressJS, MongoDB, and ReactJS.
+> ShiShop is an e-commerce website developed to learn NodeJS, ExpressJS, MongoDB, ReactJS and Redux.  ShiShop has  features for admin and users(buyyer).
+ Admin can manage products, manage orders, manage product reviews and users. User(buyyer) can check product details, add product to cart, checkout the cart,  fill shipping address, and pay payment using Stripe. and also user can check order status(processing, shipping and delivered).
 
 ## Built With
 
