@@ -36,7 +36,7 @@ const UpdateProfile = () => {
                 type:UPDATE_PROFILE_RESET
             })
         }
-    }, [dispatch, isUpdated, error, user])
+    }, [dispatch, isUpdated, error, user,navigate])
 
 
 
