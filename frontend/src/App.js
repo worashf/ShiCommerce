@@ -47,7 +47,7 @@ function App() {
   useEffect(() => {
     store.dispatch(loadUser())
     async function getStripeApiKey() {
-      const { data } = await axios.get("/api/v1/stripe-api-key")
+      const { data } = await axios.get("https://shi-commerce.onrender.com/api/v1/stripe-api-key")
       setStripeApiKey(data.stripeApiKey)
     }
     getStripeApiKey()

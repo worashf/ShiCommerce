@@ -37,9 +37,9 @@ export const getAllProducts =
         type: ALL_PRODUCTS_REQUEST,
       });
 
-      let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price}&ratings[gte]=${rating}`;
+      let link = `https://shi-commerce.onrender.com/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price}&ratings[gte]=${rating}`;
       if (category) {
-        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price}&category=${category}`;
+        link = `https://shi-commerce.onrender.com/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price}&category=${category}`;
       }
 
       const res = await axios.get(link);
@@ -59,7 +59,7 @@ export const getAllProducts =
 export const getProductdetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: GET_PRODUCT_DETAILS_REQUEST });
-    const { data } = await axios.get(`/api/v1/products/${id}`);
+    const { data } = await axios.get(`https://shi-commerce.onrender.com/api/v1/products/${id}`);
     dispatch({
       type: GET_PRODUCT_DETAILS_SUCCESS,
       payload: data.product,
@@ -76,7 +76,7 @@ export const getProductdetails = (id) => async (dispatch) => {
 export const createReview = (review) => async (dispatch) => {
   try {
     dispatch({ type: NEW_REVIEW_REQUEST });
-    const { data } = await axios.put(`/api/v1/review`, review, {
+    const { data } = await axios.put(`https://shi-commerce.onrender.com/api/v1/review`, review, {
       headers: {
         Content_Type: "application/json",
       },
@@ -104,7 +104,7 @@ export const newProduct = (productData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `/api/v1/admin/products/new`,
+      `https://shi-commerce.onrender.com/api/v1/admin/products/new`,
       productData,
       config
     );
@@ -124,7 +124,7 @@ export const newProduct = (productData) => async (dispatch) => {
 export const getAllAdminProducts = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCTS_REQUEST });
-    const { data } = await axios.get("/api/v1/admin/products");
+    const { data } = await axios.get("https://shi-commerce.onrender.com/api/v1/admin/products");
     dispatch({
       type: ADMIN_PRODUCTS_SUCCESS,
       payload: data.products,
@@ -142,7 +142,7 @@ export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
     console.log(id, "deleted");
-    const { data } = await axios.delete(`/api/v1/admin/products/${id}`);
+    const { data } = await axios.delete(`https://shi-commerce.onrender.com/api/v1/admin/products/${id}`);
 
     dispatch({
       type: DELETE_PRODUCT_SUCCESS,
@@ -168,7 +168,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/admin/products/${id}`,
+      `https://shi-commerce.onrender.com/api/v1/admin/products/${id}`,
       productData,
       config
     );
@@ -190,7 +190,7 @@ export const getProductReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: GET_REVIEWS_REQUEST });
 
-    const { data } = await axios.get(`/api/v1/reviews?id=${id}`);
+    const { data } = await axios.get(`https://shi-commerce.onrender.com/api/v1/reviews?id=${id}`);
 
     dispatch({
       type: GET_REVIEWS_SUCCESS,
@@ -210,7 +210,7 @@ export const deleteReview = (id, productId) => async (dispatch) => {
 
         dispatch({ type: DELETE_REVIEW_REQUEST })
 
-        const { data } = await axios.delete(`/api/v1/reviews?id=${id}&productId=${productId}`)
+        const { data } = await axios.delete(`https://shi-commerce.onrender.com/api/v1/reviews?id=${id}&productId=${productId}`)
 
         dispatch({
             type: DELETE_REVIEW_SUCCESS,

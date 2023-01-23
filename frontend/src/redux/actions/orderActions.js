@@ -21,7 +21,7 @@ export const createOrder = (order) => async (dispatch) => {
         }
         console.log(order, "order")
 
-        const { data } = await axios.post('/api/v1/order/new', order, config)
+        const { data } = await axios.post('https://shi-commerce.onrender.com/api/v1/order/new', order, config)
 
         dispatch({
             type: CREATE_ORDER_SUCCESS,
@@ -44,7 +44,7 @@ export const getMyOrders = () => async (dispatch) => {
     try {
         
         dispatch({ type: MY_ORDER_REQUEST })
-        const { data } = await axios.get("/api/v1/orders/me")
+        const { data } = await axios.get("https://shi-commerce.onrender.com/api/v1/orders/me")
   
         dispatch({
             type: MY_ORDER_SUCCESS,
@@ -65,7 +65,7 @@ export const orderDetails = (id) => async (dispatch) => {
     try {
         
         dispatch({ type: ORDER_DETAILS_REQUEST })
-        const { data } = await axios.get(`/api/v1/order/${id}`)
+        const { data } = await axios.get(`https://shi-commerce.onrender.com/api/v1/order/${id}`)
         console.log(data.order,"order")
         dispatch({
             type: ORDER_DETAILS_SUCCESS,
@@ -87,7 +87,7 @@ export const allOrders = () => async (dispatch) => {
 
         dispatch({ type: ALL_ORDERS_REQUEST });
 
-        const { data } = await axios.get(`/api/v1/admin/orders`)
+        const { data } = await axios.get(`https://shi-commerce.onrender.com/api/v1/admin/orders`)
 
         dispatch({
             type: ALL_ORDERS_SUCCESS,
@@ -109,7 +109,7 @@ export const deleteOrder = (id) => async (dispatch) => {
 
         dispatch({ type: DELETE_ORDER_REQUEST })
 
-        const { data } = await axios.delete(`/api/v1/admin/order/${id}`)
+        const { data } = await axios.delete(`https://shi-commerce.onrender.com/api/v1/admin/order/${id}`)
 
         dispatch({
             type: DELETE_ORDER_SUCCESS,
@@ -136,7 +136,7 @@ export const updateOrder = (id, orderData) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.put(`/api/v1/admin/order/${id}`, orderData, config)
+        const { data } = await axios.put(`https://shi-commerce.onrender.com/api/v1/admin/order/${id}`, orderData, config)
 
         dispatch({
             type: UPDATE_ORDER_SUCCESS,
