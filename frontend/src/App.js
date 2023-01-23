@@ -38,7 +38,7 @@ import ProcessOrder from "./components/admin/ProcessOrder";
 import UsersList from "./components/admin/UserList";
 import UpdateUser from "./components/admin/UpdateUser";
 import ReviewList from "./components/admin/ReviewList";
-
+import {api} from "./apiConfig"
 
 function App() {
 
@@ -47,7 +47,7 @@ function App() {
   useEffect(() => {
     store.dispatch(loadUser())
     async function getStripeApiKey() {
-      const { data } = await axios.get("https://shi-commerce.onrender.com/api/v1/stripe-api-key")
+      const { data } = await axios.get(`${api}/stripe-api-key`)
       setStripeApiKey(data.stripeApiKey)
     }
     getStripeApiKey()
