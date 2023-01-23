@@ -5,6 +5,8 @@ const multer = require("multer");
 const upload = multer();
 const cors = require("cors")
 const path = require('path')
+const { expressCspHeader } = require('express-csp-header');
+
 const app = express();
 
 const products = require('./routes/product');
@@ -15,11 +17,22 @@ const errorMidleWare = require('./middlewares/error');
 const env = require("dotenv")
 
 env.config({ path: 'backend/config/config.env' })
+// app.use(expressCspHeader({ 
+//     policies: { 
+//         'default-src': [expressCspHeader.NONE], 
+//         'img-src': [expressCspHeader.SELF], 
+//         'script-src': [expressCspHeader.SELF], 
+
+//     } 
+// })); 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors())
 app.use(cookieParser())
+
+
+
 // for parsing multipart/form-data
 app.use(upload.array());
 // product route
