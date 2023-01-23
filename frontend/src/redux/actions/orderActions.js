@@ -7,7 +7,7 @@ import {
     CLEAR_ERRORS,
 
 } from "../constants/orderConstants"
-import {api}  from "../../apiConfig"
+
 
 
 export const createOrder = (order) => async (dispatch) => {

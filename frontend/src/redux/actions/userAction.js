@@ -23,7 +23,7 @@ import {
 } from "../constants/userConstants"
  
 
-import {api}  from "../../apiConfig"
+
 export const login = (email, password) => async (dispatch) => {
     try {
         dispatch({ type: LOGIN_REQUEST })

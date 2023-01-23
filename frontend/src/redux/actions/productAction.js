@@ -28,7 +28,7 @@ import {
   DELETE_REVIEW_SUCCESS,
   DELETE_REVIEW_FAIL,
 } from "../constants/productConstants";
-import {api} from "../../apiConfig"
+
 import axios from "axios";
 export const getAllProducts =
   (keyword = "", currentPage = 1, price, category, rating = 0) =>
