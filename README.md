@@ -7,7 +7,7 @@
 
 - NodeJS
 - ExpressJS
-- MOndoDB
+- MongoDB =>(Mongoose)
 - ReactJS
 - Redux
   )
