@@ -659,3 +659,14 @@ ul.CTAs a {
   max-height: 400px;
   
 }
+.navbar-logo{
+  color: #ca7506;
+  font-size: 2rem;
+  text-decoration: none;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0.5rem;
+}
+.navbar-logo:hover{
+  color: #e68911;
+}

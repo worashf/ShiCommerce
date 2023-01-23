@@ -18,9 +18,10 @@ const Header = () => {
       <nav className="navbar row">
         <div className="col-12 col-md-3">
           <div className="navbar-brand">
-            <Link to="/">
-              <img src="/images/logo.png" alt="Logo" />
+            <Link to="/"  className="navbar-logo ">
+       ShiCommerce
             </Link>
+          
           </div>
         </div>
 
