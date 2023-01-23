@@ -40,9 +40,9 @@ app.use('/api/v1', products);
 //user authentiction
 app.use('/api/v1', auth);
 //order routes
-app.use("/api/v1", order)
+app.use('/api/v1', order)
 //payment routes
-app.use("/api/v1", payment)
+app.use('/api/v1', payment)
 //error handeler middleware
 
 
