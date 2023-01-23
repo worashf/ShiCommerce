@@ -46,11 +46,11 @@ function App() {
 
   useEffect(() => {
     store.dispatch(loadUser())
-    async function getStripeApiKey() {
-      const { data } = await axios.get(`${api}/stripe-api-key`)
-      setStripeApiKey(data.stripeApiKey)
-    }
-    getStripeApiKey()
+    // async function getStripeApiKey() {
+    //   const { data } = await axios.get(`${api}/stripe-api-key`)
+    //   setStripeApiKey(data.stripeApiKey)
+    // }
+    // getStripeApiKey()
 
   }, [])
 
@@ -89,8 +89,8 @@ function App() {
               <Route path="/admin/users" element={<UsersList />} />
               <Route path="/admin/user/:userId" element={<UpdateUser/>}/>
 
-            <Route path = "/payment" element={ stripeApiKey && 
-          <Elements stripe={loadStripe(stripeApiKey)}> <Payment/> </Elements>} />
+            {/* <Route path = "/payment" element={ stripeApiKey && 
+          <Elements stripe={loadStripe(stripeApiKey)}> <Payment/> </Elements>} /> */}
               <Route path="/cart" element={<Cart />} />
               <Route path="/dashboard" isAdmin={true} element={<Dashboard />} />
               <Route path="/admin/products" element={<ProductList />} />

@@ -1,2 +1,2 @@
 
-export const api = `https://127.0.0.1:6000/api/v1`
+export const api = `https://one-commerce.onrender.com/api/v1`
