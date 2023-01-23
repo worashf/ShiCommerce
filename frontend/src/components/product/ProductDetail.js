@@ -125,7 +125,7 @@ const ProductDetail = () => {
                   productDetail.images.map((image) => (
                     <Carousel.Item key={image.public_id}>
                       <img
-                        className="d-block w-100"
+                        className="d-block w-100 detail-product-image"
                         src={image.url}
                         alt={productDetail.name}
                       />
@@ -212,7 +212,7 @@ const ProductDetail = () => {
                 Submit Your Review
               </button>
 
-              <div className="row mt-2 mb-5">
+              <div className="row  mb-3">
                 <div className="rating w-50">
                   {user ? (
                     <Modal
@@ -266,7 +266,7 @@ const ProductDetail = () => {
                       </Modal.Body>
                     </Modal>
                   ) : (
-                    <div className="alert alert-danger mt-5" type="alert">
+                    <div className="alert alert-danger mt-2" type="alert">
                       {" "}
                       Login to post your review!!!{" "}
                     </div>
