@@ -18,6 +18,7 @@
 
   
 
+# [Online demo](https://shicomm.onrender.com/)
 # 1. User pages 
 ## 1.1 Home page product listing 
 ![screenshot](screenshot/home.PNG)
