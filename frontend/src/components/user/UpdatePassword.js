@@ -13,7 +13,7 @@ const UpdatePassword = () => {
 
 
     const {user } = useSelector(state =>  state.auth)
-    const {isUpdated, error, loading } = useSelector(state => state.user)
+    const {isUpdated, error } = useSelector(state => state.user)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     
@@ -29,7 +29,7 @@ const UpdatePassword = () => {
             navigate("/me")
             dispatch({type:UPDATE_PASSWORD_RESET })
         }
-    }, [dispatch, isUpdated, error, user])
+    }, [dispatch, isUpdated, error, user, navigate])
 
 
 

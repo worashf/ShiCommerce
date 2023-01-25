@@ -28,8 +28,8 @@ import {
   DELETE_REVIEW_SUCCESS,
   DELETE_REVIEW_FAIL,
 } from "../constants/productConstants";
+
 import axios from "axios";
-import {api} from "../../apiConfig"
 export const getAllProducts =
   (keyword = "", currentPage = 1, price, category, rating = 0) =>
   async (dispatch) => {
@@ -125,7 +125,7 @@ export const newProduct = (productData) => async (dispatch) => {
 export const getAllAdminProducts = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCTS_REQUEST });
-    const { data } = await axios.get(`/api/v1/admin/products`);
+    const { data } = await axios.get( `/api/v1/admin/products`);
     dispatch({
       type: ADMIN_PRODUCTS_SUCCESS,
       payload: data.products,

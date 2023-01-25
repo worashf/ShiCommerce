@@ -86,12 +86,14 @@ nav {
 }
 
 .card-title a {
-  color: #2e2e2e;
-}
 
-.card-title a:hover {
   color: #fa9c23;
   text-decoration: none;
+}
+
+
+.card-title a:hover {
+  color: #2e2e2e;
 }
 
 .card-body {
@@ -638,4 +640,33 @@ ul.CTAs a {
   color: #fff;
   border-radius: 3rem;
 
+}
+
+.product-card{
+   min-height: 450px;
+   max-height: 450px;
+
+}
+.product-image{
+  min-height: 200px;
+  max-height: 200px;
+  
+}
+
+
+.detail-product-image{
+  min-height: 400px;
+  max-height: 400px;
+  
+}
+.navbar-logo{
+  color: #ca7506;
+  font-size: 2rem;
+  text-decoration: none;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0.5rem;
+}
+.navbar-logo:hover{
+  color: #e68911;
 }

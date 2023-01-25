@@ -7,7 +7,8 @@ import {
     CLEAR_ERRORS,
 
 } from "../constants/orderConstants"
- import {api} from "../../apiConfig"
+
+
 
 export const createOrder = (order) => async (dispatch) => {
     try {
@@ -45,7 +46,7 @@ export const getMyOrders = () => async (dispatch) => {
         
         dispatch({ type: MY_ORDER_REQUEST })
         const { data } = await axios.get(`/api/v1/orders/me`)
-       console.log(data, "data");
+  
         dispatch({
             type: MY_ORDER_SUCCESS,
             payload: data.orders

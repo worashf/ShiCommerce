@@ -21,10 +21,10 @@ const ForgotPassword = () => {
         }
 
         if (message) {
-            alert.success(message)
+            toast.success(message)
         }
 
-    }, [dispatch, alert, error, message])
+    }, [dispatch, error, message])
 
     const submitHandler = (e) => {
         e.preventDefault();

@@ -38,12 +38,12 @@ import ProcessOrder from "./components/admin/ProcessOrder";
 import UsersList from "./components/admin/UserList";
 import UpdateUser from "./components/admin/UpdateUser";
 import ReviewList from "./components/admin/ReviewList";
-import {api} from "./apiConfig"
+
 
 function App() {
 
   const [stripeApiKey,setStripeApiKey] = useState("")
-
+ console.log(stripeApiKey, "strip")
   useEffect(() => {
     store.dispatch(loadUser())
     async function getStripeApiKey() {
@@ -89,8 +89,8 @@ function App() {
               <Route path="/admin/users" element={<UsersList />} />
               <Route path="/admin/user/:userId" element={<UpdateUser/>}/>
 
-            {/* <Route path = "/payment" element={ stripeApiKey && 
-          <Elements stripe={loadStripe(stripeApiKey)}> <Payment/> </Elements>} /> */}
+            <Route path = "/payment" element={ stripeApiKey && 
+          <Elements stripe={loadStripe(stripeApiKey)}> <Payment/> </Elements>} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/dashboard" isAdmin={true} element={<Dashboard />} />
               <Route path="/admin/products" element={<ProductList />} />
