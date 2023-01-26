@@ -636,17 +636,17 @@ ul.CTAs a {
 
 .product-card {
   min-height: 450px;
-  max-height: 450px;
+  max-height: 475px;
 }
 .product-image {
   min-height: 200px;
-  max-height: 200px;
+  max-height: 250px;
   object-fit: cover;
 }
 
 .detail-product-image {
   min-height: 400px;
-  max-height: 400px;
+  max-height: 450px;
   object-fit: cover;
 }
 .navbar-logo {
