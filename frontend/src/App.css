@@ -38,11 +38,9 @@ nav {
   width: 3rem;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
- 
 }
-#search_btn:hover{
+#search_btn:hover {
   border: 1px solid #ca7506;
-
 }
 
 .input-group {
@@ -86,11 +84,9 @@ nav {
 }
 
 .card-title a {
-
   color: #fa9c23;
   text-decoration: none;
 }
-
 
 .card-title a:hover {
   color: #2e2e2e;
@@ -496,7 +492,7 @@ footer {
 
 .sidebar-wrapper {
   display: flex;
-  width: 100%; 
+  width: 100%;
   align-items: stretch;
   min-height: 100vh;
   font-weight: normal;
@@ -506,9 +502,8 @@ footer {
   left: 0;
   top: 0;
   z-index: 10;
-
 }
-.main{
+.main {
   overflow-y: scroll;
 }
 #sidebar {
@@ -632,34 +627,28 @@ ul.CTAs a {
   color: grey;
 }
 #shipping_btn {
-
-
   background-color: #fa9c23;
   border-color: #fa9c23;
   margin-top: 2rem;
   color: #fff;
   border-radius: 3rem;
-
 }
 
-.product-card{
-   min-height: 450px;
-   max-height: 450px;
-
+.product-card {
+  min-height: 450px;
+  max-height: 450px;
 }
-.product-image{
+.product-image {
   min-height: 200px;
   max-height: 200px;
-  
 }
 
-
-.detail-product-image{
+.detail-product-image {
   min-height: 400px;
   max-height: 400px;
-  
+  object-fit: cover;
 }
-.navbar-logo{
+.navbar-logo {
   color: #ca7506;
   font-size: 2rem;
   text-decoration: none;
@@ -667,6 +656,6 @@ ul.CTAs a {
   font-style: italic;
   padding: 0.5rem;
 }
-.navbar-logo:hover{
+.navbar-logo:hover {
   color: #e68911;
 }
