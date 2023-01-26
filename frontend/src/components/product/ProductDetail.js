@@ -20,7 +20,7 @@ const ProductDetail = () => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const dispatch = useDispatch();
-  const { loading, error, productDetail } = useSelector( (state) => state.product);
+  const { loading, error, productDetail } = useSelector((state) => state.product);
   const { error: reviewError } = useSelector((state) => state.review);
   const { user } = useSelector((state) => state.auth);
   const { id } = useParams();
@@ -41,7 +41,7 @@ const ProductDetail = () => {
       toast.error(reviewError)
       dispatch(clearErrors());
     }
-  }, [error, reviewError, dispatch,id]);
+  }, [error, reviewError, dispatch, id]);
 
   const decreaseQty = () => {
     const count = document.querySelector(".count");
@@ -274,10 +274,10 @@ const ProductDetail = () => {
                 </div>
               </div>
             </div>
-            </div>
-            {productDetail.reviews && productDetail.reviews.length > 0 && (
-                        <ListReview reviews={productDetail.reviews} />
-                    )}
+          </div>
+          {productDetail.reviews && productDetail.reviews.length > 0 && (
+            <ListReview reviews={productDetail.reviews} />
+          )}
         </>
       )}
     </>
